@@ -1,0 +1,39 @@
+{
+  "employees": [
+    {
+      "id": "1",
+      "empName": "박용진",
+      "empDeptName": "SA",
+      "empTelNo": "01012345678",
+      "empMail": "emoket@kt.com"
+    },
+    {
+      "id": "2",
+      "empName": "홍길동",
+      "empDeptName": "BA",
+      "empTelNo": "01087654321",
+      "empMail": "gildong.hong@kt.com"
+    },
+    {
+      "id": 517,
+      "empName": "김성태",
+      "empDeptName": "SA",
+      "empTelNo": "123123123",
+      "empMail": "kirobo@kt.com"
+    },
+    {
+      "id": 1462,
+      "empName": "송양종",
+      "empDeptName": "SA",
+      "empTelNo": "28347298374",
+      "empMail": "yang@kt.com"
+    },
+    {
+      "id": 3350,
+      "empName": "김유석",
+      "empDeptName": "SA",
+      "empTelNo": "213423423",
+      "empMail": "useok@kt.com"
+    }
+  ]
+}
