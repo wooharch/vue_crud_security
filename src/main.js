@@ -1,7 +1,7 @@
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
 
-import { Quasar, Dialog } from 'quasar';
+import { Quasar, Dialog, Notify } from 'quasar';
 
 // Import icon libraries
 import '@quasar/extras/roboto-font/roboto-font.css';
@@ -23,7 +23,8 @@ app.use(createPinia());
 app.use(router);
 app.use(Quasar, {
   plugins: {
-    Dialog
+    Dialog,
+    Notify
   } // import Quasar plugins and add here
   /*
   config: {

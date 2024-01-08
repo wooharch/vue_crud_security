@@ -1,7 +1,9 @@
 export { fakeBackend };
 
 function fakeBackend() {
-  let users = [{ id: 1, username: 'test', password: 'test', firstName: 'Test', lastName: 'User' }];
+  let fakeUsers = [
+    { id: 1, username: 'test', password: 'test', firstName: 'Test', lastName: 'User' }
+  ];
   let realFetch = window.fetch;
   window.fetch = function (url, opts) {
     return new Promise((resolve, reject) => {
@@ -10,9 +12,9 @@ function fakeBackend() {
 
       function handleRoute() {
         switch (true) {
-          case url.endsWith('/employees/authenticate') && opts.method === 'POST':
+          case url.endsWith('/users/authenticate') && opts.method === 'POST':
             return authenticate();
-          case url.endsWith('/employees') && opts.method === 'GET':
+          case url.endsWith('/users') && opts.method === 'GET':
             return getUsers();
           default:
             // pass through any requests not handled above
@@ -26,7 +28,7 @@ function fakeBackend() {
 
       function authenticate() {
         const { username, password } = body();
-        const user = users.find((x) => x.username === username && x.password === password);
+        const user = fakeUsers.find((x) => x.username === username && x.password === password);
 
         if (!user) return error('Username or password is incorrect');
 
@@ -41,7 +43,7 @@ function fakeBackend() {
 
       function getUsers() {
         if (!isAuthenticated()) return unauthorized();
-        return ok(users);
+        return ok(fakeUsers);
       }
 
       // helper functions

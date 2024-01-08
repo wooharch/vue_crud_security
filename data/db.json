@@ -20,20 +20,6 @@
       "empDeptName": "SA",
       "empTelNo": "123123123",
       "empMail": "kirobo@kt.com"
-    },
-    {
-      "id": 1462,
-      "empName": "송양종",
-      "empDeptName": "SA",
-      "empTelNo": "28347298374",
-      "empMail": "yang@kt.com"
-    },
-    {
-      "id": 3350,
-      "empName": "김유석",
-      "empDeptName": "SA",
-      "empTelNo": "213423423",
-      "empMail": "useok@kt.com"
     }
   ]
 }
