@@ -7,29 +7,19 @@ const authStore = useAuthStore();
 
 const $q = useQuasar();
 
-const username = ref('test');
-const password = ref('test');
+const username = ref(null);
+const password = ref(null);
 
 const onSubmit = async () => {
-  console.log(username.value, password.value);
-  if (!username.value || !password.value) {
+  try {
+    await authStore.login(username.value, password.value);
+  } catch (error) {
     $q.notify({
       color: 'red-5',
       textColor: 'white',
       icon: 'warning',
-      message: 'You need to accept the license and terms first'
+      message: error
     });
-  } else {
-    try {
-      await authStore.login(username.value, password.value);
-    } catch (error) {
-      $q.notify({
-        color: 'red-5',
-        textColor: 'white',
-        icon: 'warning',
-        message: error
-      });
-    }
   }
 };
 </script>

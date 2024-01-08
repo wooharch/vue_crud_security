@@ -8,7 +8,12 @@ const router = createRouter({
   routes: [
     { path: '/', component: () => import('@/views/Login.vue') },
     { path: '/login', component: () => import('@/views/Login.vue') },
-    { path: '/employees', component: () => import('@/views/Employees.vue') }
+    { path: '/employees', component: () => import('@/views/Employees.vue') },
+    {
+      path: '/:catchAll(.*)*',
+      name: 'notfound',
+      component: () => import('@/views/NotFoundPage.vue')
+    }
   ]
 });
 
@@ -16,10 +21,10 @@ router.beforeEach(async (to) => {
   // redirect to login page if not logged in and trying to access a restricted page
   const publicPages = ['/login'];
   const authRequired = !publicPages.includes(to.path);
-  const auth = useAuthStore();
+  const authStore = useAuthStore();
 
-  if (authRequired && !auth.user) {
-    auth.returnUrl = to.fullPath;
+  if (authRequired && !authStore.user) {
+    authStore.returnUrl = to.fullPath;
     return '/login';
   }
 });

@@ -1,25 +1,32 @@
 {
   "employees": [
     {
-      "id": "1",
-      "empName": "박용진",
+      "id": 2112,
+      "empName": "김수진",
       "empDeptName": "SA",
-      "empTelNo": "01012345678",
+      "empTelNo": "010123123123",
+      "empMail": "sujin@kt.com"
+    },
+    {
+      "id": 2379,
+      "empName": "김자영",
+      "empDeptName": "SA",
+      "empTelNo": "01044213123",
+      "empMail": "jayoung@kt.com"
+    },
+    {
+      "id": 7834,
+      "empName": "박용진",
+      "empDeptName": "ICIS Tr 아키텍처팀",
+      "empTelNo": "01012341234",
       "empMail": "emoket@kt.com"
     },
     {
-      "id": "2",
-      "empName": "홍길동",
-      "empDeptName": "BA",
-      "empTelNo": "01087654321",
-      "empMail": "gildong.hong@kt.com"
-    },
-    {
-      "id": 517,
+      "id": 347,
       "empName": "김성태",
       "empDeptName": "SA",
-      "empTelNo": "123123123",
-      "empMail": "kirobo@kt.com"
+      "empTelNo": "010",
+      "empMail": "asldkf"
     }
   ]
 }

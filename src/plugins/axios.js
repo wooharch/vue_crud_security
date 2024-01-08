@@ -1,62 +1,59 @@
-import { useErrorStore } from '@/stores/useError'
-import router from '../router'
-import axios from 'axios'
+import router from '@/router';
+import axios from 'axios';
 
-axios.defaults.baseURL = import.meta.env.VITE_API_URL
-axios.defaults.headers.common['Authorization'] = localStorage.getItem('token')
-axios.defaults.withCredentials = true
+axios.defaults.baseURL = import.meta.env.VITE_API_URL;
+axios.defaults.headers.common['Authorization'] = localStorage.getItem('token');
+axios.defaults.withCredentials = true;
 
-// Add a request interceptor
+console.log(axios.defaults.headers);
+
+// 요청 인터셉터 추가하기
 axios.interceptors.request.use(
   function (config) {
-    // Do something before request is sent
-
-    useErrorStore().$reset()
-
-    return config
+    // 요청이 전달되기 전에 작업 수행
+    return config;
   },
   function (error) {
-    // Do something with request error
-    return Promise.reject(error)
+    // 요청 오류가 있는 작업 수행
+    return Promise.reject(error);
   }
-)
+);
 
-// Add a response interceptor
+// 응답 인터셉터 추가하기
 axios.interceptors.response.use(
   function (response) {
-    // Any status code that lie within the range of 2xx cause this function to trigger
-    // Do something with response data
-    return response
+    // 2xx 범위에 있는 상태 코드는 이 함수를 트리거 합니다.
+    // 응답 데이터가 있는 작업 수행
+    return response;
   },
   function (error) {
-    // Any status codes that falls outside the range of 2xx cause this function to trigger
-    // Do something with response error
+    // 2xx 외의 범위에 있는 상태 코드는 이 함수를 트리거 합니다.
+    // 응답 오류가 있는 작업 수행
     switch (error.response.status) {
       case 401:
-        localStorage.removeItem('token')
-        window.location.reload()
-        break
+        localStorage.removeItem('token');
+        window.location.reload();
+        break;
       case 403:
       case 404:
         router.push({
-          name: 'error',
+          name: 'notfound',
           props: {
             error: {
               message: error.response.data.message,
               status: error.status
             }
           }
-        })
-        break
+        });
+        break;
       case 422:
-        useErrorStore().$state = error.response.data
-        break
+        break;
       default:
-        console.log(error.response.data)
+        console.log(error.response.data);
     }
 
-    return Promise.reject(error)
+    return Promise.reject(error);
   }
-)
+);
 
-export default axios
+export default axios;
