@@ -1,7 +1,7 @@
 import { defineStore, acceptHMRUpdate } from 'pinia';
 import { fetchWrapper } from '@/helpers';
 
-const baseUrl = `${import.meta.env.VITE_API_URL}/employees`;
+const baseUrl = `${import.meta.env.VITE_API_URL}/api/v1/employees`;
 
 export const useEmployeeStore = defineStore('employee', {
   state: () => ({
@@ -24,8 +24,8 @@ export const useEmployeeStore = defineStore('employee', {
     async addEmployee(employee) {
       try {
         this.isLoading = true;
-        this.employees.push(employee);
-        await fetchWrapper.post(baseUrl, employee);
+        const newEmployee = await fetchWrapper.post(baseUrl, employee);
+        this.employees.push(newEmployee);
       } catch (error) {
         console.log(error);
       } finally {
@@ -36,8 +36,8 @@ export const useEmployeeStore = defineStore('employee', {
     async deleteEmployee(id) {
       try {
         this.isLoading = true;
-        this.employees = this.employees.filter((t) => t.id !== id);
-        await fetchWrapper.delete(`${baseUrl}/${id}`);
+        const deletedEmployee = await fetchWrapper.post(`${import.meta.env.VITE_API_URL}/api/v1/employee/${id}`);
+        this.employees = this.employees.filter((t) => t.id !== deletedEmployee.id);
       } catch (error) {
         console.log(error);
       } finally {
@@ -46,18 +46,20 @@ export const useEmployeeStore = defineStore('employee', {
     },
     // 특정 임직원 수정
     async editEmployee(id, employee) {
+      console.log(id, {employee})
       try {
         this.isLoading = true;
         let target = this.employees.find((t) => t.id === id);
 
         if (!target) return;
+        
+        const updatedEmployee = await fetchWrapper.post(`${baseUrl}/${id}`, employee);
 
-        target.empName = employee.empName;
-        target.empDeptName = employee.empDeptName;
-        target.empTelNo = employee.empTelNo;
-        target.empMail = employee.empMail;
+        target.empName = updatedEmployee.empName;
+        target.empDeptName = updatedEmployee.empDeptName;
+        target.empTelNo = updatedEmployee.empTelNo;
+        target.empMail = updatedEmployee.empMail;
 
-        await fetchWrapper.put(`${baseUrl}/${id}`, employee);
       } catch (error) {
         console.log(error);
       } finally {

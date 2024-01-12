@@ -14,8 +14,8 @@ import App from './App.vue';
 import router from './router';
 
 // 테스트 용도의 더미 백엔드
-import { fakeBackend } from './helpers';
-fakeBackend();
+// import { fakeBackend } from './helpers';
+// fakeBackend();
 
 const app = createApp(App);
 

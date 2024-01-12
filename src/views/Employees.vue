@@ -85,7 +85,7 @@ const handleSubmit = () => {
     editEmployee(id, editedItem.value);
   } else {
     addEmployee({
-      id: Math.floor(Math.random() * 10000),
+      // id: Math.floor(Math.random() * 10000),
       empName,
       empDeptName,
       empTelNo,
