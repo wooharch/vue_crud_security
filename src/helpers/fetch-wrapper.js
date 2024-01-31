@@ -32,7 +32,7 @@ function authHeader(url) {
   const { user } = useAuthStore();
   const isLoggedIn = !!user?.token;
   console.log('isLoggedIn', isLoggedIn)
-  const isApiUrl = url.startsWith(import.meta.env.VITE_API_URL);
+  //const isApiUrl = url.startsWith(import.meta.env.VITE_API_URL);
   //if (isLoggedIn && isApiUrl) {
   if (isLoggedIn) {
     return { Authorization: `Bearer ${user.token}` };
