@@ -9,15 +9,18 @@ export const fetchWrapper = {
 
 function request(method) {
   return async (url, body) => {
+    const composeUrl = url 
+    // modified by  jake import.meta.env.VITE_API_URL + url
+    
     const requestOptions = {
       method,
-      headers: authHeader(url)
+      headers: authHeader(composeUrl)
     };
     if (body) {
       requestOptions.headers['Content-Type'] = 'application/json';
       requestOptions.body = JSON.stringify(body);
     }
-    const response = await fetch(url, requestOptions);
+    const response = await fetch(composeUrl, requestOptions);
     return handleResponse(response);
   };
 }
@@ -28,8 +31,10 @@ function authHeader(url) {
   // return auth header with jwt if user is logged in and request is to the api url
   const { user } = useAuthStore();
   const isLoggedIn = !!user?.token;
-  const isApiUrl = '/'; // VITE_API_URL; //url.startsWith(import.meta.env.VITE_API_URL);
-  if (isLoggedIn && isApiUrl) {
+  console.log('isLoggedIn', isLoggedIn)
+  const isApiUrl = url.startsWith(import.meta.env.VITE_API_URL);
+  //if (isLoggedIn && isApiUrl) {
+  if (isLoggedIn) {
     return { Authorization: `Bearer ${user.token}` };
   } else {
     return {};
