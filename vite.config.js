@@ -16,6 +16,8 @@ export default defineConfig({
       sassVariables: 'src/quasar-variables.sass'
     })
   ],
+  //lcocal test 시 주석 삭제 
+  // ---- Start -----
   // server: {
   //   host: 'localhost',
   //   port: 3000,
@@ -26,6 +28,8 @@ export default defineConfig({
   //     }
   //   }
   // },
+  // ---- end -----
+  //lcocal test 시 주석 삭제 
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
