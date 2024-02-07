@@ -101,28 +101,33 @@ const columns = [
   { name: 'empTelNo', align: 'left', label: '전화번호', field: 'empTelNo', sortable: true },
   { name: 'empMail', align: 'left', label: '이메일', field: 'empMail' },
   { name: 'actions', align: 'left', label: 'Actions' }
-]
+];
 
-import { fabGithub } from '@quasar/extras/fontawesome-v6'
-import { useRouter } from 'vue-router'
-import { onMounted } from 'vue'
+import { fabGithub } from '@quasar/extras/fontawesome-v6';
+import { useRouter } from 'vue-router';
+import { onMounted } from 'vue';
 
-import { storeToRefs } from 'pinia'
-import { useEmployeeStore } from '@/stores/employee'
-const employeeStore = useEmployeeStore()
-const { employees, isLoading } = storeToRefs(employeeStore)
-const { getEmployees } = employeeStore
+import { storeToRefs } from 'pinia';
+import { useEmployeeStore } from '@/stores/employee';
+import { useAuthStore } from '@/stores/useAuth';
+const employeeStore = useEmployeeStore();
+const { employees, isLoading } = storeToRefs(employeeStore);
+const { getEmployees } = employeeStore;
 
+const authStore = useAuthStore();
 onMounted(() => {
+  if (!authStore.user?.token) {
+    return router.push('/login');
+  }
   // fetch
-  getEmployees()
-})
+  getEmployees();
+});
 
-const router = useRouter()
+const router = useRouter();
 const onEdit = (props) => {
   // console.log('onEdit: ' + JSON.stringify(props))
-  router.push(`/employees/${props.id}`)
-}
+  router.push(`/employees/${props.id}`);
+};
 </script>
 
 <style lang="sass">
