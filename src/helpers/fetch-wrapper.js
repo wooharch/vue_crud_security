@@ -9,9 +9,8 @@ export const fetchWrapper = {
 
 function request(method) {
   return async (url, body) => {
-    const composeUrl = url 
-    // modified by  jake import.meta.env.VITE_API_URL + url
-    
+    const composeUrl = url; //import.meta.env.VITE_API_URL + url
+
     const requestOptions = {
       method,
       headers: authHeader(composeUrl)
@@ -27,11 +26,11 @@ function request(method) {
 
 // helper functions
 
-function authHeader(url) {
+function authHeader() {
   // return auth header with jwt if user is logged in and request is to the api url
   const { user } = useAuthStore();
   const isLoggedIn = !!user?.token;
-  console.log('isLoggedIn', isLoggedIn)
+  console.log('isLoggedIn', isLoggedIn);
   //const isApiUrl = url.startsWith(import.meta.env.VITE_API_URL);
   //if (isLoggedIn && isApiUrl) {
   if (isLoggedIn) {
