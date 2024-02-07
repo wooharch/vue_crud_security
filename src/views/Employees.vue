@@ -106,8 +106,7 @@ const handleReset = () => {
   <q-layout view="hHh lpR fFf">
     <q-header elevated class="bg-primary text-white">
       <q-toolbar>
-        <q-toolbar-title>Cloud Native EDU ( JWT )</q-toolbar-title>
-
+        <q-toolbar-title>Cloud Native EDU Bluegreen ( JWT )</q-toolbar-title>
         <q-btn flat round icon="logout" @click="authStore.logout" />
       </q-toolbar>
     </q-header>
