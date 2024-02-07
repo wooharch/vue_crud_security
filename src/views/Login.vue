@@ -1,7 +1,8 @@
 <script setup>
-import { ref } from 'vue';
+import { onMounted, ref, watch } from 'vue';
 import { useQuasar } from 'quasar';
 import { useAuthStore } from '@/stores/useAuth';
+import router from '@/router';
 
 const authStore = useAuthStore();
 
@@ -22,6 +23,21 @@ const onSubmit = async () => {
     });
   }
 };
+
+onMounted(() => {
+  if (authStore.user?.token) {
+    router.push('/employees');
+  }
+});
+
+watch(
+  () => authStore.user?.token,
+  (token) => {
+    if (token) {
+      router.push('/employees');
+    }
+  }
+);
 </script>
 
 <template>
@@ -37,7 +53,7 @@ const onSubmit = async () => {
             type="text"
             v-model="username"
             label="ID *"
-            hint="for test: test"
+            hint="for test: edu bluegree/canary test"
             lazy-rules
             :rules="[(val) => (val && val.length > 0) || 'Please type username(ID)']"
           />
@@ -46,7 +62,7 @@ const onSubmit = async () => {
             type="password"
             v-model="password"
             label="Password *"
-            hint="for test: test"
+            hint="for test: edu1234"
             lazy-rules
             :rules="[(val) => (val !== null && val !== '') || 'Please type your password']"
           />
