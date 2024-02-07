@@ -46,9 +46,9 @@ defineConfig({
         target: 'http://localhost:3000', 
 // LOCAL
 
-        // target: 'http://icis-sa-customui-api-gw.dev.icis.kt.co.kr', // DEV
+        // target: 'http://xxx.dev.xxx.co.kr', // DEV
 
-        // target: 'http://icis-sa-customui-api-gw.sit.icis.kt.co.kr', // SIT
+        // target: 'http://xxx.sit.xxx.co.kr', // SIT
 
         changeOrigin: true,
 
