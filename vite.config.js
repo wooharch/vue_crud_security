@@ -16,12 +16,12 @@ export default defineConfig({
   ],
   server: {
     // host: 'd10rrjyt8il5jp.cloudfront.net',
-    // port: 3000,
-    proxy: {
-      '/api': {
-        target: 'http://k8s-simple-backendi-12183553ad-1493743248.ap-northeast-2.elb.amazonaws.com/',
-        changeOrigin: true
-      }
+     port: 80,
+    #proxy: {
+    #  '/api': {
+    #    target: 'http://k8s-simple-backendi-12183553ad-1493743248.ap-northeast-2.elb.amazonaws.com/',
+    #    changeOrigin: true
+    #  }
     }
   },
   resolve: {
