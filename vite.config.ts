@@ -27,7 +27,7 @@ export default defineConfig({
   //       changeOrigin: true
   //     }
   //   }
-  // },
+  // },//
   // ---- end -----
   //lcocal test 시 주석 삭제 
   resolve: {
