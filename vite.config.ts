@@ -19,7 +19,7 @@ export default defineConfig({
   //lcocal test 시 주석 삭제 
   // ---- Start -----
   server: {
-    // host: 'localhost',
+    host: 'd10rrjyt8il5jp.cloudfront.net',
     // port: 3000,
     proxy: {
       '/api/*': {
