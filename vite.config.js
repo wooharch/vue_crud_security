@@ -22,7 +22,7 @@ export default defineConfig({
     //    target: 'http://k8s-simple-backendi-12183553ad-1493743248.ap-northeast-2.elb.amazonaws.com/',
     //    changeOrigin: true
     //  }
-    }
+    //}
   },
   resolve: {
     alias: {
