@@ -19,8 +19,8 @@ export default defineConfig({
   //lcocal test 시 주석 삭제 
   // ---- Start -----
   server: {
-    host: 'localhost',
-    port: 3000,
+    // host: 'localhost',
+    // port: 3000,
     proxy: {
       '/api': {
         target: 'http://k8s-simple-backendi-12183553ad-1493743248.ap-northeast-2.elb.amazonaws.com/',
