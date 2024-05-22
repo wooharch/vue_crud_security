@@ -18,7 +18,7 @@ export default defineConfig({
     // host: 'd10rrjyt8il5jp.cloudfront.net',
     // port: 3000,
     proxy: {
-      '/api/*': {
+      '/api': {
         target: 'http://k8s-simple-backendi-12183553ad-1493743248.ap-northeast-2.elb.amazonaws.com/',
         changeOrigin: true
       }
