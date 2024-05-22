@@ -8,7 +8,6 @@ const router = createRouter({
   routes: [
     { path: '/', component: () => import('@/views/Login.vue') },
     { path: '/login', component: () => import('@/views/Login.vue') },
-    { path: '/api/login', component: () => import('@/views/Login.vue') },
     { path: '/employees', component: () => import('@/views/Employees.vue') },
     {
       path: '/:catchAll(.*)*',
@@ -20,13 +19,13 @@ const router = createRouter({
 
 router.beforeEach(async (to) => {
   // redirect to login page if not logged in and trying to access a restricted page
-  const publicPages = ['/api/login'];
+  const publicPages = ['/login'];
   const authRequired = !publicPages.includes(to.path);
   const authStore = useAuthStore();
 
   if (authRequired && !authStore.user) {
     authStore.returnUrl = to.fullPath;
-    return '/api/login';
+    return '/login';
   }
 });
 
