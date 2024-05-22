@@ -7,6 +7,7 @@ const router = createRouter({
   linkActiveClass: 'active',
   routes: [
     { path: '/', component: () => import('@/views/Login.vue') },
+    { path: '/login', component: () => import('@/views/Login.vue') },
     { path: '/api/login', component: () => import('@/views/Login.vue') },
     { path: '/employees', component: () => import('@/views/Employees.vue') },
     {
