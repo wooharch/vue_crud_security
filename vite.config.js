@@ -19,7 +19,7 @@ export default defineConfig({
     // port: 3000,
     proxy: {
       '/api': {
-        target: 'http://k8s-test-backendi-8484ded64e-2053488898.ap-northeast-2.elb.amazonaws.com/',
+        target: 'http://k8s-simple-backendi-12183553ad-1493743248.ap-northeast-2.elb.amazonaws.com/',
         changeOrigin: true
       }
     }
