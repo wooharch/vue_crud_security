@@ -42,4 +42,4 @@ jobs:
           aws s3 cp \
             --recursive \
             --region ap-northeast-2 \
-            dist s3://edu-frontend/ # 자신의 s3 url 로 변경해주세요.
+            dist s3://edu-frontend-test/ # 자신의 s3 url 로 변경해주세요.
